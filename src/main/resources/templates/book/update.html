@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Library Management Web</title>
+</head>
+<body>
+  <h3>Изменение книги</h3>
+
+  <form th:method="patch" th:action="@{/book/{id}/update(id=${book.id})}" th:object="${book}">
+    <label for="updateName">Название книги: </label> <br/>
+    <input type="text" th:field="*{name}" id="updateName">
+    <div style="color:red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name error</div>
+    <br/>
+
+    <label for="updateFullNameAuthor">ФИО автора книги: </label> <br/>
+    <input type="text" th:field="*{fullNameAuthor}" id="updateFullNameAuthor"><br/>
+    <div style="color:red" th:if="${#fields.hasErrors('fullNameAuthor')}" th:errors="*{fullNameAuthor}">
+      FullNameAuthor error</div>
+    <br/>
+
+    <label for="updateYear">Год книги: </label> <br/>
+    <input type="number" th:field="*{year}" id="updateYear">
+    <div style="color:red" th:if="${#fields.hasErrors('year')}" th:errors="*{year}">Year error</div>
+    <br/>
+
+    <input type="submit" value="Обновить"/>
+  </form>
+
+  <form th:method="GET" th:action="@{/book}">
+    <input type="submit" value="Назад в меню"/>
+  </form>
+
+  <form th:method="GET" th:action="@{/book/list}">
+    <input type="submit" value="Назад"/>
+  </form>
+
+</body>
+</html>

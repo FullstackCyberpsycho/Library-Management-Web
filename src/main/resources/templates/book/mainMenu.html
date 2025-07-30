@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Library Management Web</title>
+</head>
+<body>
+    <h3>Главное меню</h3>
+<!--    <a href="/book/list">Список книг</a> <br/>-->
+<!--    <a href="/book/add">Добавить книгу</a><br/>-->
+<!--    <a href="/book/delete-all">Удалить все книги</a><br/>-->
+
+    <form th:method="GET" th:action="@{/book/list}">
+        <input type="submit" value="Список книг"/>
+    </form>
+
+    <form th:method="GET" th:action="@{/book/add}">
+        <input type="submit" value="Добавить книгу"/>
+    </form>
+
+    <form th:method="GET" th:action="@{/book/delete-all}">
+        <input type="submit" value="Удалить все книги"/>
+    </form>
+</body>
+</html>

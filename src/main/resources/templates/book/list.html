@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Library Management Web</title>
+</head>
+<body>
+    <h3>Список книг</h3>
+
+    <div th:each="book : ${books}">
+        <a th:href="@{/book/{id}(id=${book.id})}"
+           th:text="${book.name}"/>
+    </div>
+
+    <br/>
+    <form th:method="GET" th:action="@{/book}">
+        <input type="submit" value="Назад в меню"/>
+    </form>
+</body>
+</html>

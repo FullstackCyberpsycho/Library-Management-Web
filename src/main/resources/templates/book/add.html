@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Library Management Web</title>
+</head>
+<body>
+  <h3>Добавление книги</h3>
+
+  <form th:action="@{/book}" th:object="${book}" th:method="post">
+    <label for="name">Введите название книги: </label> <br/>
+    <input type="text" id="name" th:field="*{name}">
+    <div style="color:red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name error</div>
+    <br/>
+
+    <label for="fullNameAuthor">Введите ФИО автора: </label> <br/>
+    <input type="text" id="fullNameAuthor" th:field="*{fullNameAuthor}">
+    <div style="color:red" th:if="${#fields.hasErrors('fullNameAuthor')}" th:errors="*{fullNameAuthor}">
+      FullNameAuthor error</div>
+    <br/>
+
+    <label for="year">Введите год книги: </label> <br/>
+    <input type="text" id="year" th:field="*{year}">
+    <div style="color:red" th:if="${#fields.hasErrors('year')}" th:errors="*{year}">Year error</div>
+    <br/>
+
+    <input type="submit" value="Добавить"/>
+  </form>
+
+  <form th:method="GET" th:action="@{/book}">
+    <input type="submit" value="Назад в меню"/>
+  </form>
+
+</body>
+</html>
