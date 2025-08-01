@@ -1,4 +1,4 @@
-package com.example.LibraryManagementWeb.services;
+/*package com.example.LibraryManagementWeb.services;
 
 import com.example.LibraryManagementWeb.models.Book;
 
@@ -12,3 +12,4 @@ public interface BookService {
     void deleteBook(int id);
     void deleteAllBook();
 }
+*/

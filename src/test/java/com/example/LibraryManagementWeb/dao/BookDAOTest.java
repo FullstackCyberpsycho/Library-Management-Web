@@ -23,7 +23,7 @@ class BookDAOTest {
             .withUsername("testuser")
             .withPassword("testpass");
 
-    private BookDAO bookDAO;
+    private BookDAO2 bookDAO;
 
     @BeforeAll
     void setUpDatabase() {
@@ -43,7 +43,7 @@ class BookDAOTest {
                 );
             """);
 
-        bookDAO = new BookDAO(jdbcTemplate);
+        bookDAO = new BookDAO2(jdbcTemplate);
     }
 
     @BeforeEach

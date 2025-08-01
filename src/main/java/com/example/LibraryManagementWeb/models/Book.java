@@ -1,12 +1,22 @@
 package com.example.LibraryManagementWeb.models;
 
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
+import lombok.*;
 
+@Data
+//@Getter @Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
+@Table(name = "books")
 public class Book {
-    private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
 
     @NotBlank(message = "Название книги не должно быть пустым")
     private String name;
@@ -17,45 +27,4 @@ public class Book {
     @NotNull(message = "Год книги не должно быть пустым")
     @Min(value = 0, message = "Год книги не может быть отрицательным")
     private int year;
-
-    public Book() {}
-
-    public Book(String name, int year, String fullNameAuthor, int id) {
-        this.name = name;
-        this.year= year;
-        this.fullNameAuthor = fullNameAuthor;
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getFullNameAuthor() {
-        return fullNameAuthor;
-    }
-
-    public void setFullNameAuthor(String fullNameAuthor) {
-        this.fullNameAuthor = fullNameAuthor;
-    }
-
-    public int getYear() {
-        return year;
-    }
-
-    public void setYear(int year) {
-        this.year = year;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 }

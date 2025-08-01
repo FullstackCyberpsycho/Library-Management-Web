@@ -2,11 +2,11 @@ package com.example.LibraryManagementWeb.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
+//import org.springframework.jdbc.core.JdbcTemplate;
+//import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.web.filter.HiddenHttpMethodFilter;
 
-import javax.sql.DataSource;
+//import javax.sql.DataSource;
 
 @Configuration
 public class WebConfig {
@@ -14,7 +14,7 @@ public class WebConfig {
     public HiddenHttpMethodFilter hiddenHttpMethodFilter() {
         return new HiddenHttpMethodFilter();
     }
-
+/*
     @Bean
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
@@ -29,5 +29,5 @@ public class WebConfig {
     @Bean
     public JdbcTemplate jdbcTemplate() {
         return new JdbcTemplate(dataSource());
-    }
+    }*/
 }

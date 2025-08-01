@@ -1,4 +1,4 @@
-package com.example.LibraryManagementWeb.controllers;
+/*package com.example.LibraryManagementWeb.controllers;
 
 import com.example.LibraryManagementWeb.models.Book;
 import com.example.LibraryManagementWeb.services.BookServiceImpl;
@@ -75,4 +75,4 @@ public class BookController {
         bookService.deleteAllBook();
         return "redirect:/book";
     }
-}
+}*/

@@ -1,7 +1,7 @@
 package com.example.LibraryManagementWeb.services;
 
 
-import com.example.LibraryManagementWeb.dao.BookDAO;
+import com.example.LibraryManagementWeb.dao.BookDAO2;
 import com.example.LibraryManagementWeb.models.Book;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -19,7 +19,7 @@ import static org.mockito.Mockito.when;
 
 public class BookServiceImplTest {
     @Mock
-    private BookDAO bookDAO;
+    private BookDAO2 bookDAO;
 
     @InjectMocks
     private BookServiceImpl bookService;

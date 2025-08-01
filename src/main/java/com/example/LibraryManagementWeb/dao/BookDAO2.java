@@ -6,21 +6,21 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
-import java.sql.Connection;
 import java.util.List;
 
 @Component
 @Repository
-public class BookDAO {
+public class BookDAO2 {
     private final JdbcTemplate jdbcTemplate;
 
-    public BookDAO(JdbcTemplate jdbcTemplate) {
+    public BookDAO2(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    public void addBook(Book book) {
+    public Book addBook(Book book) {
         jdbcTemplate.update( "INSERT INTO books(name, fullNameAuthor, year) VALUES(?, ?, ?)",
                 book.getName(), book.getFullNameAuthor(), book.getYear());
+        return book;
     }
 
     public List<Book> getAllBook() {
@@ -33,16 +33,19 @@ public class BookDAO {
                 new BeanPropertyRowMapper<>(Book.class)).stream().findAny().orElse(null);
     }
 
-    public void updateBook(int id, Book updateBook) {
+    public Book updateBook(int id, Book updateBook) {
         jdbcTemplate.update("UPDATE books SET name=?, fullNameAuthor=?, year=? WHERE id=?", updateBook.getName(),
                 updateBook.getFullNameAuthor(), updateBook.getYear(), id);
+        return updateBook;
     }
 
-    public void deleteBook(int id) {
-        jdbcTemplate.update("DELETE FROM books WHERE id=?", id);
+    public boolean deleteBook(int id) {
+        int res = jdbcTemplate.update("DELETE FROM books WHERE id=?", id);
+        return res > 0;
     }
 
-    public void deleteAllBook() {
-        jdbcTemplate.update("DELETE FROM books");
+    public boolean deleteAllBook() {
+        int res = jdbcTemplate.update("DELETE FROM books");
+        return res > 0;
     }
 }*/
