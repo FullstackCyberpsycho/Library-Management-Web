@@ -46,7 +46,6 @@ public class BookRestController2 {
         }
     }
 
-
     @DeleteMapping("/{id}/delete")
     public ResponseEntity<Void> deleteBook(@PathVariable("id") long id) {
         if (bookService.deleteById(id)) {
