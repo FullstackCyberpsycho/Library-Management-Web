@@ -46,12 +46,7 @@ public class BookService3 {
         }
     }
 
-    public boolean deleteAll() {
-        if (bookRepository.count() > 0) {
-            bookRepository.deleteAll();
-            return true;
-        } else {
-            return false;
-        }
+    public void deleteAll() {
+        bookRepository.deleteAll();
     }
 }

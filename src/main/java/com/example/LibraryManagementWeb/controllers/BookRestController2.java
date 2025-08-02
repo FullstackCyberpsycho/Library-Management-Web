@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @RestController
@@ -29,26 +30,25 @@ public class BookRestController2 {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Optional<Book>> getInfo(@PathVariable long id) {
-        if (bookService.findById(id) != null) {
-            return ResponseEntity.ok(bookService.findById(id));
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+    public ResponseEntity<Book> getBookById(@PathVariable long id) {
+        return bookService.findById(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
     }
 
     @PatchMapping("/{id}/update")
     public ResponseEntity<Book> updateBook(@PathVariable("id") long id, @RequestBody @Valid Book book) {
-        if (bookService.update(id, book) != null) {
-            return ResponseEntity.ok(bookService.update(id, book));
-        } else {
+        try {
+            Book updated = bookService.update(id, book);
+            return ResponseEntity.ok(updated);
+        } catch (NoSuchElementException e) {
             return ResponseEntity.notFound().build();
         }
     }
 
 
     @DeleteMapping("/{id}/delete")
-    public ResponseEntity<Void> getDeleteBook(@PathVariable("id") long id) {
+    public ResponseEntity<Void> deleteBook(@PathVariable("id") long id) {
         if (bookService.deleteById(id)) {
             return ResponseEntity.noContent().build();
         } else {
@@ -57,11 +57,8 @@ public class BookRestController2 {
     }
 
     @DeleteMapping("/delete-all")
-    public ResponseEntity<Void> getDeleteAll() {
-        if (bookService.deleteAll()) {
-            return ResponseEntity.noContent().build();
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+    public ResponseEntity<Void> deleteAll() {
+        bookService.deleteAll();
+        return ResponseEntity.noContent().build();
     }
 }
