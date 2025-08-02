@@ -11,7 +11,7 @@ import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/book")
+@RequestMapping("/api/book")
 public class BookRestController2 {
     private BookService3 bookService;
 

@@ -2,6 +2,8 @@ package com.example.LibraryManagementWeb.services;
 
 import com.example.LibraryManagementWeb.repository.BookRepository;
 import com.example.LibraryManagementWeb.models.Book;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
